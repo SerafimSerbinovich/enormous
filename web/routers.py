@@ -1,0 +1,9 @@
+from fastapi import APIRouter
+
+from model.model import llm
+
+router = APIRouter(prefix="/llm")
+
+@router.post("/")
+async def root(content: str):
+    return llm.get_llm_response(content)
