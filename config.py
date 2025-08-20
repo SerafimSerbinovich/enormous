@@ -13,10 +13,6 @@ class LLMConfig:
 @dataclass
 class BotConfig:
     token: str
-    admin_ids: list[int]
-    webhook_url: str
-    webhook_path: str
-    log_level: str
 
 @dataclass
 class Config:
@@ -30,11 +26,7 @@ llm = LLMConfig(
 )
 
 bot = BotConfig(
-    token="1234567890",
-    admin_ids=[1234567890],
-    webhook_url="https://your-domain.com",
-    webhook_path="/webhook",
-    log_level="INFO",
+    token=os.getenv("BOT_KEY")
 )
 
 config = Config(llm=llm,
