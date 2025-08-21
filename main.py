@@ -1,12 +1,20 @@
+import asyncio
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 import uvicorn
+
+from bot.bot import dp, bot
 from web import routers
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup
+    await asyncio.create_task(dp.start_polling(bot))
+    yield
+    # shutdown
+    await bot.session.close()
 
-def main():
-    app = FastAPI()
-    app.include_router(routers.router)
-    uvicorn.run(app, host="127.0.0.1", port=8000)
-
-if __name__ == "__main__":
-     main()
+app = FastAPI(lifespan=lifespan)
+app.include_router(routers.router)
+uvicorn.run(app)
