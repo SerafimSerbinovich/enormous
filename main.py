@@ -4,8 +4,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 import uvicorn
 
-from bot.bot import dp, bot
-from web import routers
+from core.bot.bot import dp, bot
+from core.web import routers
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

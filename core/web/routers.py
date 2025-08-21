@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from model.model import llm
+from core.model.model import llm
 
 router = APIRouter(prefix="/llm")
 

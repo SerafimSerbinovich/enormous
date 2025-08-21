@@ -1,11 +1,11 @@
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 
 import config
-from bot.states import BotStates
-from model.model import llm
+from core.bot.states import BotStates
+from core.model.model import llm
 
 bot = Bot(token=config.bot.token)
 dp = Dispatcher()
