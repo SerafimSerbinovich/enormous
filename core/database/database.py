@@ -7,8 +7,7 @@ import config
 DATABASE_URL = config.config.database.url
 
 engine = create_engine(
-    url=config.database.url,
-    echo=True
+    url=config.database.url
 )
 
 # Create SessionLocal class
