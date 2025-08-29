@@ -6,11 +6,13 @@ import uvicorn
 
 from core.bot.bot import dp, bot
 from core.web import routers
+from core.database.database import create_tables
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup
+    create_tables()  # Create database tables
     await asyncio.create_task(dp.start_polling(bot))
     yield
     # shutdown
