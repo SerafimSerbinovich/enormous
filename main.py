@@ -5,7 +5,7 @@ from fastapi import FastAPI
 import uvicorn
 
 from core.bot.bot import dp, bot
-from core.web import routers, user_router
+from core.web import llm_routers, user_routers
 from core.database.database import create_tables
 
 
